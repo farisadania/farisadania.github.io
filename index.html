@@ -31,6 +31,8 @@
     h1 .outline{-webkit-text-stroke:1.5px var(--ink);color:transparent}
     .hero-copy{font-size:17px;line-height:1.65;max-width:590px;color:#4f534a}
     .hero-copy strong{color:var(--ink);font-weight:600}
+    .hero-side{border-left:1px solid var(--line);padding:0 0 4px 22px;font:11px/1.9 var(--mono);color:var(--muted)}
+    .hero-side b{display:block;color:var(--ink);font-weight:500;margin-bottom:8px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
     .btn{display:inline-flex;align-items:center;gap:18px;padding:14px 17px;border:1px solid var(--ink);font:11px var(--mono);text-transform:uppercase;letter-spacing:.04em;transition:.2s}
     .btn.primary{background:var(--ink);color:var(--paper)}.btn:hover{transform:translateY(-3px)}.btn.primary:hover{background:var(--acid);color:var(--ink)}
@@ -123,39 +125,34 @@
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">02 / Selected work</div><div><h2>A few problems I’ve worked on.</h2><p>Selected project stories. Some work was delivered in a proprietary industrial environment, so the descriptions focus on the problem-solving and outcomes rather than confidential implementation details.</p></div></div>
         <div class="project-tools reveal" role="group" aria-label="Filter projects">
-          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="nlp">NLP &amp; GenAI</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button><button class="filter" data-filter="research">Research projects</button>
+          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="nlp">NLP &amp; GenAI</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button>
         </div>
         <div class="projects">
           <article class="project reveal" data-category="nlp">
             <div class="project-top"><span>01 / Generative AI</span><span>Selected work</span></div>
             <div class="project-mark"><div class="network"></div></div>
-            <div><h3>AI-powered Safety Analytics</h3><p>Designed a reusable Azure OpenAI GPT-4 pipeline, alongside BERT and topic-modelling methods, to turn large volumes of unstructured safety records into structured, decision-ready insight for industrial clients.</p>
+            <div><h3>AI-powered Safety Analytics</h3><p>Designed a reusable Azure OpenAI GPT-4 pipeline, alongside BERT and topic-modelling methods, to turn large volumes of unstructured safety records into structured, decision-ready insight for industrial clients</p>
               <p>Use Cases:</p>
               <p>1. Chemicals sector: BERT multi-label classifiers predict consequence types from free-text hazard observations, and the pipeline then infers root causes of injury cases, so the client can flag high-risk observations and target proactive interventions.</p>
-              <p>2. Consumer health sector: Iterative prompt engineering assessed whether leadership actions or omissions contributed to events across incident, near-miss and audit records from 27 sites against 45 group standards, reducing manual investigation and surfacing risk-reduction opportunities.</p>
-              <p>3. Industry association: Classified hazards, consequences and work types across 40,000+ incident investigation records within a common taxonomy to surface sector-wide trends, worker hazards and recurring prevention priorities.</p>
+              <p>2. Consumer health sector: Iterative prompt engineering assessed whether leadership actions or omissions contributed to events across incident, near-miss and audit records from 27 sites, and LDA topic modelling with manual refinement produced a standardised set of gap categories. Reduced manual investigation effort and gave the client cross-region and site-level visibility of recurring gaps to guide targeted process improvements.</p>
+              <p>3. Industry association: Classified hazards, consequences and work types across 40,000+ incident investigation records within a common taxonomy to surface sector-wide trends, working with safety and human factors specialists.</p>
               <div class="tags"><span>Azure OpenAI GPT-4</span><span>Prompt engineering</span><span>BERT</span><span>LDA Topic Modelling</span></div>
             </div>
           </article>
           <article class="project reveal" data-category="ml">
             <div class="project-top"><span>02 / Predictive ML</span><span>Selected work</span></div>
             <div class="project-mark"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div><h3>Predictive Emissions Monitoring</h3><p>Where an asset has no continuous emissions analyser, neural-network models can predict its NOx, CO, SO₂ and VOC emissions from operational time-series data, supporting near-real-time monitoring and earlier intervention.</p><div class="tags"><span>GANs</span><span>RNNs</span><span>Time series</span><span>Python</span></div></div>
+            <div><h3>Predictive Emissions Monitoring</h3><p>Where an asset has no continuous emissions analyser, neural-network models can predict its NOx, CO, SO₂ and VOC emissions from operational sensor data. In my role at ERM, I use the company's established pipeline for this: it augments limited stack-test data (SMOTE, GAN, Gaussian and covariance noise) and trains Keras/TensorFlow models. <strong>I learned the workflow well enough to use it independently, rebuilding client-specific models for gas- and diesel-powered machinery by preparing the data processing and repeatedly refining the configuration to get the best predictions. </strong>It shows how quickly I can pick up an established modelling workflow and get results from it.</p><div class="tags"><span>GANs</span><span>RNNs</span><span>Time series</span><span>Python</span></div></div>
           </article>
           <article class="project reveal" data-category="data">
             <div class="project-top"><span>03 / Real-time analytics</span><span>Selected work</span></div>
             <div class="project-mark"><div class="network"></div></div>
-            <div><h3>Emissions Monitoring Platform</h3><p>In my role at ERM, I work on emissions.AI, an existing near real-time, cloud-based platform for industrial emissions monitoring and flaring analysis. It supports emissions calculations, trend analysis and operational recommendations for energy clients.</p><div class="tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Azure</span></div></div>
+            <div><h3>Emissions Monitoring Platform</h3><p>In my role at ERM, I work on emissions.AI, an existing near real-time, cloud-based platform for industrial emissions monitoring and flaring analysis, used by 14 global oil and gas operators. I develop, debug, deploy and expand its codebase as required, working closely with process engineers, data analysts and software developers to make sure every fix and upgrade works for the client.<strong> Here I've learned how to get to grips with an established codebase quickly, contribute to a live product that clients depend on, and work with a team to keep it reliable as it grows.</strong></p><div class="tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Azure</span></div></div>
           </article>
           <article class="project reveal" data-category="nlp">
-            <div class="project-top"><span>04 / RAG &amp; GraphRAG</span><span>Personal project</span></div>
+            <div class="project-top"><span>04 / Automation</span><span>Selected work</span></div>
             <div class="project-mark"><div class="network"></div></div>
-            <div><h3>Talk to Wikipedia</h3><p>Built a local question-answering prototype that retrieves relevant Wikipedia passages using vector search and graph relationships, then generates answers grounded in the retrieved evidence.</p><p>The project combines Chroma for semantic passage retrieval, Neo4j for article, topic and chunk relationships, and Ollama for local embeddings and answer generation.</p><div class="tags"><span>Python</span><span>RAG</span><span>GraphRAG</span><span>Chroma</span><span>Neo4j</span><span>Ollama</span></div><a class="paper-link" href="https://github.com/farisadania/talk-to-wikipedia-graphrag" target="_blank" rel="noopener noreferrer">View project on GitHub ↗</a></div>
-          </article>
-          <article class="project reveal" data-category="nlp">
-            <div class="project-top"><span>05 / Automation</span><span>Selected work</span></div>
-            <div class="project-mark"><div class="pulse"><svg viewBox="0 0 160 75" fill="none"><path d="M2 48 L24 48 L34 44 L43 50 L54 14 L65 65 L76 35 L87 48 L101 48 L111 28 L121 54 L132 45 L158 45" stroke="#171916" stroke-width="2.5"/></svg></div></div>
-            <div><h3>Document or Process Automation</h3><p>At work, every pull request needed a detailed description covering the databases used, files processed, code changes and deployment plan. I developed an automated workflow to turn code changes and repository context into a structured PR description, reducing manual effort and improving consistency.</p><div class="tags"><span>LLMs</span><span>Automation</span><span>Prompting</span><span>Python</span></div></div>
+            <div><h3>Document or Process Automation</h3><p>At work, every pull request needed a detailed description covering the databases used, files processed, code changes and deployment plan, which took 20–30 minutes each time. I decided to automate it on my own initiative. I built a notebook that retrieves the changes and linked work items from Azure DevOps and uses GPT-4 to draft the description from the required template. It now takes about two minutes and is used by data scientists and data engineers on the team. <strong>It's a small tool, but it shows how routine work can be automated.</strong></p><div class="tags"><span>NLP</span><span>Single Pass Clustering</span><span>LDA</span><span>Topic Modelling</span></div></div>
           </article>
         </div>
       </div>
