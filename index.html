@@ -6,6 +6,7 @@
   <meta name="description" content="Farisa Dania Zahid — Data Scientist building practical machine learning and data products.">
   <meta name="theme-color" content="#f5f4ef">
   <title>Farisa Dania Zahid — Data Scientist</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
@@ -73,26 +74,42 @@
 
     nav a:hover,.text-link:hover{opacity:.55}
 
-    .menu{display:none;background:none;border:0;font-size:24px}
+    .menu{
+      display:none;
+      background:none;
+      border:0;
+      font-size:24px
+    }
 
     .hero{
-      padding:90px 0 84px;
+      padding:70px 0 74px;
       display:grid;
-      grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);
-      gap:38px;
-      align-items:center;
+      grid-template-columns:220px minmax(0,1fr);
+      grid-template-rows:auto auto;
+      column-gap:54px;
+      align-items:start;
       position:relative;
       isolation:isolate;
       overflow:hidden;
-      min-height:520px
+      min-height:560px
     }
 
-    .hero-copy-wrap{position:relative;z-index:1}
+    .hero-copy-wrap{
+      position:relative;
+      z-index:1;
+      grid-column:2;
+      grid-row:1;
+      max-width:720px;
+      padding-top:30px
+    }
 
     .hero-art{
       position:relative;
-      justify-self:end;
-      width:min(100%,390px);
+      justify-self:start;
+      align-self:start;
+      grid-column:1;
+      grid-row:1;
+      width:220px;
       aspect-ratio:1;
       border:1px solid var(--line);
       border-radius:50%;
@@ -155,8 +172,8 @@
       background:var(--acid);
       display:grid;
       place-items:center;
-      font:500 clamp(20px,3vw,34px) var(--display);
-      letter-spacing:-.08em;
+      font:500 clamp(14px,2.4vw,25px) var(--display);
+      letter-spacing:.06em;
       animation:core-breathe 7s ease-in-out infinite
     }
 
@@ -182,10 +199,12 @@
     }
 
     h1{
-      font:600 clamp(58px,8.5vw,110px)/.91 var(--display);
-      letter-spacing:-.085em;
-      margin:28px 0 30px;
-      max-width:850px
+      grid-column:1/-1;
+      grid-row:2;
+      max-width:1050px;
+      font:600 clamp(68px,9vw,118px)/.88 var(--display);
+      letter-spacing:-.065em;
+      margin:45px 0 0
     }
 
     h1 .outline{
@@ -196,24 +215,13 @@
     .hero-copy{
       font-size:17px;
       line-height:1.65;
-      max-width:590px;
+      max-width:560px;
       color:#4f534a
     }
 
-    .hero-copy strong{color:var(--ink);font-weight:600}
-
-    .hero-side{
-      border-left:1px solid var(--line);
-      padding:0 0 4px 22px;
-      font:11px/1.9 var(--mono);
-      color:var(--muted)
-    }
-
-    .hero-side b{
-      display:block;
+    .hero-copy strong{
       color:var(--ink);
-      font-weight:500;
-      margin-bottom:8px
+      font-weight:600
     }
 
     .actions{
@@ -235,11 +243,17 @@
       transition:.2s
     }
 
-    .btn.primary{background:var(--ink);color:var(--paper)}
+    .btn.primary{
+      background:var(--ink);
+      color:var(--paper)
+    }
 
     .btn:hover{transform:translateY(-3px)}
 
-    .btn.primary:hover{background:var(--acid);color:var(--ink)}
+    .btn.primary:hover{
+      background:var(--acid);
+      color:var(--ink)
+    }
 
     .ticker{
       border-top:1px solid var(--line);
@@ -255,7 +269,11 @@
 
     .ticker span{margin-right:42px}
 
-    .ticker i{font-style:normal;color:var(--ink);margin-right:42px}
+    .ticker i{
+      font-style:normal;
+      color:var(--ink);
+      margin-right:42px
+    }
 
     section{
       padding:100px 0;
@@ -303,7 +321,10 @@
 
     .service:nth-child(odd){background:#f0efe9}
 
-    .num{font:10px var(--mono);color:var(--muted)}
+    .num{
+      font:10px var(--mono);
+      color:var(--muted)
+    }
 
     .service h3{
       font:500 19px var(--display);
@@ -537,7 +558,10 @@
       align-items:start
     }
 
-    .contact .kicker{color:#a8aa9f;padding-top:8px}
+    .contact .kicker{
+      color:#a8aa9f;
+      padding-top:8px
+    }
 
     .contact h2{
       font:600 clamp(48px,8vw,94px)/.95 var(--display);
@@ -547,11 +571,11 @@
       grid-column:2
     }
 
-    .contact .wrap>p,.contact .actions,.contact-meta{grid-column:2}
-
-    .contact .btn{
-      border-color:var(--paper)
+    .contact .wrap>p,.contact .actions,.contact-meta{
+      grid-column:2
     }
+
+    .contact .btn{border-color:var(--paper)}
 
     .contact .btn.primary{
       background:var(--acid);
@@ -585,20 +609,31 @@
       transition:opacity .65s,transform .65s
     }
 
-    .reveal.visible{opacity:1;transform:none}
+    .reveal.visible{
+      opacity:1;
+      transform:none
+    }
 
     @media(max-width:900px){
       nav{gap:16px}
+
       .hero{
-        grid-template-columns:minmax(0,1fr) minmax(210px,.65fr);
+        grid-template-columns:190px minmax(0,1fr);
         gap:20px
       }
-      .hero-art{width:min(100%,300px)}
+
+      .hero-art{
+        width:190px
+      }
+
       .project-tools{margin-left:0}
     }
 
     @media(max-width:760px){
-      .wrap{width:min(100% - 36px,var(--max))}
+      .wrap{
+        width:min(100% - 36px,var(--max))
+      }
+
       .topbar{height:64px}
 
       nav{
@@ -622,17 +657,31 @@
       .hero{
         padding:70px 0 60px;
         grid-template-columns:1fr;
-        gap:30px;
+        grid-template-rows:auto auto;
+        gap:34px;
         min-height:unset
       }
 
       .hero-art{
-        width:min(66vw,270px);
-        justify-self:center;
-        grid-row:1
+        grid-column:1;
+        grid-row:1;
+        width:min(58vw,240px);
+        justify-self:start
       }
 
-      .hero-copy-wrap{grid-row:2}
+      .hero-copy-wrap{
+        grid-column:1;
+        grid-row:2;
+        padding-top:0
+      }
+
+      h1{
+        grid-column:1;
+        grid-row:3;
+        font-size:clamp(52px,16vw,78px);
+        line-height:.92;
+        margin:0
+      }
 
       .section-head{
         grid-template-columns:1fr;
@@ -722,9 +771,11 @@
     }
   </style>
 </head>
+
 <body>
   <header class="wrap topbar">
     <a class="brand" href="#home"><span>FZ</span>FARISA DANIA ZAHID</a>
+
     <nav id="nav">
       <a href="#work">Selected work</a>
       <a href="#publications">Publications</a>
@@ -733,25 +784,37 @@
       <a href="#toolkit">Toolkit</a>
       <a href="#contact">Contact ↗</a>
     </nav>
+
     <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
   </header>
 
   <main id="home">
     <div class="wrap hero">
+      <div class="hero-art" aria-hidden="true">
+        <span class="orbit"></span>
+        <span class="orbit orbit-two"></span>
+        <span class="hero-core">DATA</span>
+      </div>
+
       <div class="hero-copy-wrap">
         <div class="eyebrow">Data scientist · Aberdeen, UK</div>
-        <h1>Making data<br><span class="outline">make sense.</span></h1>
-        <p class="hero-copy">I'm Dani, a Data Scientist with an experience in real-world industrial challenges for clients—from emissions monitoring and prediction to AI-powered text analytics. I build practical <strong>machine-learning and GenAI solutions</strong> that turn complex operational data into insights and tools clients can use.</p>
+
+        <p class="hero-copy">
+          I'm Dani, a Data Scientist working on real-world industrial challenges—from emissions monitoring and prediction to AI-powered text analytics. I build practical
+          <strong>machine-learning and GenAI solutions</strong>
+          that turn complex operational data into insights and tools clients can use.
+        </p>
+
         <div class="actions">
           <a class="btn primary" href="#work">Explore my work <span>↘</span></a>
           <a class="btn" href="mailto:farisadaniazahid.ds@gmail.com">Get in touch <span>↗</span></a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <span class="orbit"></span>
-        <span class="orbit orbit-two"></span>
-        <span class="hero-core">FZ</span>
-      </div>
+
+      <h1>
+        Curious at the edges.<br>
+        <span class="outline">Practical at heart.</span>
+      </h1>
     </div>
 
     <div class="ticker">
@@ -1019,7 +1082,7 @@
     <section id="publications">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="kicker">03 / Publication</div>
+          <div class="kicker">Publication</div>
           <div>
             <h2>Air quality during COVID-19 lockdowns.</h2>
             <p>Published in <em>The Granite Journal</em>, this group project evaluated particulate matter (PM10 and PM2.5) levels at selected sites across England and Scotland during COVID-19 lockdowns. The study investigated whether lockdowns were associated with reduced particulate matter levels.</p>
@@ -1035,7 +1098,7 @@
     <section id="about">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="kicker">04 / A little about me</div>
+          <div class="kicker">03 / A little about me</div>
           <div>
             <h2>Curious at the edges. Practical at heart.</h2>
           </div>
@@ -1075,7 +1138,7 @@
     <section id="toolkit">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="kicker">05 / Toolkit</div>
+          <div class="kicker">06 / Toolkit</div>
           <div>
             <h2>The tools behind the work.</h2>
             <p>A working toolkit across data analysis, machine learning, databases and visualisation.</p>
@@ -1140,9 +1203,12 @@
 
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="kicker">06 / Contact</div>
+      <div class="kicker">08 / Contact</div>
       <h2>Have an interesting problem? Let's talk.</h2>
-      <p style="color:#b8bab0;max-width:480px;line-height:1.7">I’m always happy to connect about data science, machine learning, interesting projects or new opportunities.</p>
+
+      <p style="color:#b8bab0;max-width:480px;line-height:1.7">
+        I’m always happy to connect about data science, machine learning, interesting projects or new opportunities.
+      </p>
 
       <div class="actions">
         <a class="btn primary" href="mailto:farisadaniazahid.ds@gmail.com">Email me ↗</a>
