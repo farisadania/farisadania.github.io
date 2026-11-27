@@ -4,33 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Farisa Dania Zahid — Data Scientist building practical machine learning and data products.">
-  <meta name="theme-color" content="#f2efe5">
+  <meta name="theme-color" content="#f3f0e7">
   <title>Farisa Dania Zahid — Data Scientist</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Italiana&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
 
     :root {
-      --paper: #f2efe5;
+      --paper: #f3f0e7;
       --paper-soft: #e8e4d8;
       --ink: #171916;
-      --muted: #77796f;
-      --rule: #cac8bb;
+      --muted: #71746a;
+      --rule: #c9c7ba;
       --blue: #9aa9cf;
       --red: #bd5b45;
-      --display: "Italiana", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
+      --display: "Space Grotesk", Arial, sans-serif;
+      --sans: "Manrope", Arial, sans-serif;
       --mono: "DM Mono", monospace;
       --width: 1240px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -45,9 +41,7 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
+    button { font: inherit; }
 
     .page {
       width: min(var(--width), calc(100% - 64px));
@@ -66,7 +60,7 @@
       display: flex;
       align-items: center;
       gap: 11px;
-      font: 500 12px var(--mono);
+      font: 600 12px var(--mono);
       text-transform: uppercase;
     }
 
@@ -83,7 +77,7 @@
 
     .masthead-note {
       color: var(--muted);
-      font: italic 14px var(--display);
+      font: 700 13px var(--display);
     }
 
     .masthead nav {
@@ -94,13 +88,9 @@
       text-transform: uppercase;
     }
 
-    .masthead nav a {
-      border-bottom: 1px solid transparent;
-    }
+    .masthead nav a { border-bottom: 1px solid transparent; }
 
-    .masthead nav a:hover {
-      border-color: var(--ink);
-    }
+    .masthead nav a:hover { border-color: var(--ink); }
 
     .menu-button {
       display: none;
@@ -118,9 +108,7 @@
       border-bottom: 1px solid var(--ink);
     }
 
-    .hero-copy {
-      padding: 68px 48px 68px 0;
-    }
+    .hero-copy { padding: 68px 48px 68px 0; }
 
     .eyebrow,
     .section-index,
@@ -151,15 +139,15 @@
     h1 {
       max-width: 820px;
       margin: 0;
-      font: 400 clamp(78px, 10vw, 138px)/.82 var(--display);
-      letter-spacing: -.065em;
+      font: 700 clamp(70px, 9vw, 124px)/.86 var(--display);
+      letter-spacing: -.075em;
     }
 
     h1 em {
       display: block;
       margin-left: .13em;
       color: var(--blue);
-      font-style: italic;
+      font-style: normal;
     }
 
     .hero-intro {
@@ -230,9 +218,7 @@
       border-radius: 50%;
     }
 
-    .orbit::before {
-      inset: 12%;
-    }
+    .orbit::before { inset: 12%; }
 
     .orbit::after {
       inset: 27%;
@@ -311,9 +297,7 @@
       white-space: nowrap;
     }
 
-    .ticker span {
-      margin-right: 28px;
-    }
+    .ticker span { margin-right: 28px; }
 
     .ticker b {
       margin-right: 28px;
@@ -342,8 +326,8 @@
     .section-heading h2 {
       max-width: 850px;
       margin: 0;
-      font: 400 clamp(48px, 7vw, 88px)/.9 var(--display);
-      letter-spacing: -.055em;
+      font: 700 clamp(48px, 7vw, 88px)/.92 var(--display);
+      letter-spacing: -.065em;
     }
 
     .section-heading p {
@@ -395,30 +379,31 @@
 
     .project-group-heading h3 {
       margin: 0;
-      font: 400 clamp(31px, 4vw, 48px)/1 var(--display);
-      letter-spacing: -.035em;
+      font: 700 clamp(31px, 4vw, 48px)/1 var(--display);
+      letter-spacing: -.04em;
     }
 
-    .project-group[hidden] {
-      display: none;
-    }
+    .project-group[hidden] { display: none; }
 
     .projects-viewport {
+      position: relative;
       overflow: hidden;
-      transition: height .35s ease;
+      transition: height .4s ease;
     }
 
     .projects {
-      display: flex;
+      position: relative;
       width: 100%;
-      transition: transform .45s cubic-bezier(.22,.61,.36,1);
     }
 
     .project {
-      position: relative;
-      flex: 0 0 100%;
-      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(72%, 820px);
+      min-width: 0;
       min-height: 430px;
+      height: auto;
       display: grid;
       grid-template-columns: minmax(220px, .72fr) minmax(0, 1.28fr);
       grid-template-rows: auto 1fr;
@@ -426,10 +411,40 @@
       padding: clamp(24px, 4vw, 42px);
       border: 1px solid var(--rule);
       background: var(--paper-soft);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(.76);
+      transition:
+        transform .5s cubic-bezier(.2, .7, .2, 1),
+        opacity .5s ease,
+        visibility .5s ease;
     }
 
-    .project:nth-child(even) {
-      background: #dedfd8;
+    .project:nth-child(even) { background: #dedfd8; }
+
+    .project.is-center {
+      z-index: 3;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .project.is-left,
+    .project.is-right {
+      z-index: 2;
+      opacity: .58;
+      visibility: visible;
+      cursor: pointer;
+    }
+
+    .project.is-left {
+      transform: translate(-50%, -50%) translateX(-68%) scale(.78);
+    }
+
+    .project.is-right {
+      transform: translate(-50%, -50%) translateX(68%) scale(.78);
     }
 
     .project-meta {
@@ -461,8 +476,8 @@
     .project h3 {
       max-width: 700px;
       margin: 0 0 16px;
-      font: 400 clamp(36px, 5vw, 58px)/.94 var(--display);
-      letter-spacing: -.045em;
+      font: 700 clamp(34px, 4vw, 54px)/.96 var(--display);
+      letter-spacing: -.055em;
     }
 
     .project p {
@@ -473,9 +488,7 @@
       line-height: 1.65;
     }
 
-    .project p strong {
-      color: var(--ink);
-    }
+    .project p strong { color: var(--ink); }
 
     .tags {
       display: flex;
@@ -503,6 +516,8 @@
     }
 
     .project-controls {
+      position: relative;
+      z-index: 4;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -525,7 +540,7 @@
       height: 41px;
       border: 1px solid var(--ink);
       border-radius: 50%;
-      background: transparent;
+      background: var(--paper);
       color: var(--ink);
       cursor: pointer;
       transition: .2s;
@@ -551,14 +566,12 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .publication-label {
-      color: var(--muted);
-    }
+    .publication-label { color: var(--muted); }
 
     .publication-row h3 {
       margin: 0;
-      font: 400 clamp(32px, 4vw, 48px)/1 var(--display);
-      letter-spacing: -.035em;
+      font: 700 clamp(32px, 4vw, 48px)/1 var(--display);
+      letter-spacing: -.045em;
     }
 
     .publication-row p {
@@ -569,9 +582,7 @@
       line-height: 1.7;
     }
 
-    .publication-link {
-      justify-self: end;
-    }
+    .publication-link { justify-self: end; }
 
     .about-grid {
       display: grid;
@@ -581,8 +592,8 @@
 
     .about-statement {
       margin: 0;
-      font: 400 clamp(38px, 5vw, 64px)/.98 var(--display);
-      letter-spacing: -.045em;
+      font: 700 clamp(38px, 5vw, 64px)/.98 var(--display);
+      letter-spacing: -.055em;
     }
 
     .about-copy {
@@ -591,9 +602,7 @@
       line-height: 1.8;
     }
 
-    .about-copy p:first-child {
-      margin-top: 0;
-    }
+    .about-copy p:first-child { margin-top: 0; }
 
     .education {
       display: grid;
@@ -622,7 +631,7 @@
       display: block;
       margin-bottom: 5px;
       color: var(--ink);
-      font: 400 16px var(--display);
+      font: 700 16px var(--sans);
     }
 
     .toolkit {
@@ -653,15 +662,13 @@
       gap: 34px;
     }
 
-    .contact-index {
-      color: #b0b1a6;
-    }
+    .contact-index { color: #b0b1a6; }
 
     .contact h2 {
       max-width: 850px;
       margin: 0;
-      font: 400 clamp(54px, 8vw, 98px)/.88 var(--display);
-      letter-spacing: -.055em;
+      font: 700 clamp(54px, 8vw, 98px)/.92 var(--display);
+      letter-spacing: -.065em;
     }
 
     .contact-copy {
@@ -671,9 +678,7 @@
       line-height: 1.7;
     }
 
-    .contact .button {
-      border-color: var(--paper);
-    }
+    .contact .button { border-color: var(--paper); }
 
     .contact .button.primary {
       background: var(--red);
@@ -692,33 +697,19 @@
     }
 
     @media (max-width: 900px) {
-      .page {
-        width: calc(100% - 42px);
-      }
+      .page { width: calc(100% - 42px); }
 
-      .masthead {
-        grid-template-columns: 1fr auto;
-      }
+      .masthead { grid-template-columns: 1fr auto; }
 
-      .masthead-note {
-        display: none;
-      }
+      .masthead-note { display: none; }
 
-      .hero {
-        grid-template-columns: minmax(0, 1fr) 290px;
-      }
+      .hero { grid-template-columns: minmax(0, 1fr) 290px; }
 
-      .orbit-column {
-        min-height: 540px;
-      }
+      .orbit-column { min-height: 540px; }
 
-      .orbit {
-        width: 260px;
-      }
+      .orbit { width: 260px; }
 
-      .project {
-        grid-template-columns: 220px minmax(0,1fr);
-      }
+      .project { grid-template-columns: 220px minmax(0,1fr); }
 
       .publication-row {
         grid-template-columns: 130px minmax(0,1fr);
@@ -731,13 +722,9 @@
     }
 
     @media (max-width: 680px) {
-      .page {
-        width: calc(100% - 32px);
-      }
+      .page { width: calc(100% - 32px); }
 
-      .masthead {
-        height: 68px;
-      }
+      .masthead { height: 68px; }
 
       .masthead nav {
         display: none;
@@ -752,26 +739,18 @@
         flex-direction: column;
       }
 
-      .masthead nav.open {
-        display: flex;
-      }
+      .masthead nav.open { display: flex; }
 
-      .menu-button {
-        display: block;
-      }
+      .menu-button { display: block; }
 
       .hero {
         grid-template-columns: 1fr;
         min-height: 0;
       }
 
-      .hero-copy {
-        padding: 52px 0 38px;
-      }
+      .hero-copy { padding: 52px 0 38px; }
 
-      h1 {
-        font-size: clamp(64px, 18vw, 92px);
-      }
+      h1 { font-size: clamp(58px, 16vw, 84px); }
 
       .orbit-column {
         min-height: 330px;
@@ -779,17 +758,11 @@
         border-top: 1px solid var(--rule);
       }
 
-      .orbit {
-        width: min(72vw, 270px);
-      }
+      .orbit { width: min(72vw, 270px); }
 
-      .orbit-caption {
-        display: none;
-      }
+      .orbit-caption { display: none; }
 
-      .section {
-        padding: 68px 0;
-      }
+      .section { padding: 68px 0; }
 
       .section-heading,
       .project-group-heading {
@@ -798,7 +771,7 @@
       }
 
       .section-heading h2 {
-        font-size: clamp(48px, 13vw, 68px);
+        font-size: clamp(44px, 12vw, 64px);
       }
 
       .work-filters {
@@ -806,15 +779,14 @@
         overflow-x: auto;
       }
 
-      .work-filter {
-        white-space: nowrap;
-      }
+      .work-filter { white-space: nowrap; }
 
-      .project-groups {
-        gap: 48px;
-      }
+      .project-groups { gap: 48px; }
 
       .project {
+        width: 82%;
+        max-height: 70vh;
+        overflow-y: auto;
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: 14px;
@@ -822,28 +794,28 @@
         padding: 21px;
       }
 
-      .project-meta,
-      .project-visual,
-      .project-copy {
-        grid-column: 1;
+      .project.is-left {
+        transform: translate(-50%, -50%) translateX(-68%) scale(.76);
       }
 
-      .project-meta {
-        grid-row: 1;
+      .project.is-right {
+        transform: translate(-50%, -50%) translateX(68%) scale(.76);
       }
+
+      .project-meta,
+      .project-visual,
+      .project-copy { grid-column: 1; }
+
+      .project-meta { grid-row: 1; }
 
       .project-visual {
         grid-row: 2;
         min-height: 150px;
       }
 
-      .project-copy {
-        grid-row: 3;
-      }
+      .project-copy { grid-row: 3; }
 
-      .project h3 {
-        font-size: 38px;
-      }
+      .project h3 { font-size: 36px; }
 
       .publication-row {
         grid-template-columns: 1fr;
@@ -860,9 +832,7 @@
         gap: 28px;
       }
 
-      .education {
-        grid-template-columns: 1fr;
-      }
+      .education { grid-template-columns: 1fr; }
 
       .degree + .degree {
         padding-left: 0;
@@ -875,7 +845,7 @@
       }
 
       .contact h2 {
-        font-size: clamp(52px, 14vw, 76px);
+        font-size: clamp(50px, 13vw, 72px);
       }
 
       footer {
@@ -888,12 +858,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
 
       .orbit-ring,
-      .projects,
+      .project,
       .projects-viewport {
         animation: none;
         transition: none;
@@ -983,7 +951,6 @@
       </div>
 
       <div class="project-groups">
-
         <section class="project-group" data-project-group="nlp" aria-labelledby="nlp-heading">
           <header class="project-group-heading">
             <span class="section-index">01 / NLP &amp; GenAI</span>
@@ -1206,7 +1173,6 @@
             </div>
           </div>
         </section>
-
       </div>
     </section>
 
@@ -1327,7 +1293,7 @@
       nav.classList.toggle('open');
     });
 
-    nav.querySelectorAll('a').forEach(link => {
+    nav.queryEach('a').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('open');
       });
@@ -1339,37 +1305,67 @@
       const count = group.querySelector('.project-count');
       const previous = group.querySelector('[data-direction="previous"]');
       const next = group.querySelector('[data-direction="next"]');
+      const arrows = group.querySelector('.project-arrows');
       const cards = [...track.querySelectorAll('.project')];
-      const arrowArea = group.querySelector('.project-arrows');
 
       let currentIndex = 0;
 
       function updateCarousel() {
-        const currentCard = cards[currentIndex];
+        const total = cards.length;
 
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        viewport.style.height = `${currentCard.offsetHeight}px`;
+        cards.forEach((card, index) => {
+          card.classList.remove('is-left', 'is-center', 'is-right');
+
+          if (total === 1) {
+            card.classList.add('is-center');
+            return;
+          }
+
+          const offset = (index - currentIndex + total) % total;
+
+          if (offset === 0) {
+            card.classList.add('is-center');
+          } else if (offset === 1) {
+            card.classList.add('is-right');
+          } else if (offset === total - 1) {
+            card.classList.add('is-left');
+          }
+        });
+
+        requestAnimationFrame(() => {
+          viewport.style.height = `${cards[currentIndex].offsetHeight}px`;
+        });
 
         count.textContent =
-          `${String(currentIndex + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+          `${String(currentIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
 
-        previous.disabled = currentIndex === 0;
-        next.disabled = currentIndex === cards.length - 1;
-        arrowArea.hidden = cards.length < 2;
+        previous.disabled = total < 2;
+        next.disabled = total < 2;
+        arrows.hidden = total < 2;
       }
 
       previous.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
+        if (cards.length > 1) {
+          currentIndex = (currentIndex - 1 + cards.length) % cards.length;
           updateCarousel();
         }
       });
 
       next.addEventListener('click', () => {
-        if (currentIndex < cards.length - 1) {
-          currentIndex++;
+        if (cards.length > 1) {
+          currentIndex = (currentIndex + 1) % cards.length;
           updateCarousel();
         }
+      });
+
+      cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          if (card.classList.contains('is-left') ||
+              card.classList.contains('is-right')) {
+            currentIndex = index;
+            updateCarousel();
+          }
+        });
       });
 
       window.addEventListener('resize', updateCarousel);
