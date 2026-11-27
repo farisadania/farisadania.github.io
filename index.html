@@ -41,9 +41,7 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea {
+    button {
       font: inherit;
     }
 
@@ -295,7 +293,9 @@
     }
 
     @keyframes orbit {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .ticker {
@@ -375,41 +375,20 @@
       color: var(--paper);
     }
 
-    .project-groups {
-      display: grid;
-      gap: 66px;
-    }
-
-    .project-group-heading {
-      display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
-      gap: 34px;
-      align-items: baseline;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .project-group-heading h3 {
-      margin: 0;
-      font: 800 clamp(31px, 4vw, 48px)/1 var(--sans);
-      letter-spacing: -.04em;
-    }
-
-    .project-group[hidden] {
-      display: none;
-    }
-
-    .project-spread {
-      position: relative;
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 42px;
-      min-height: 430px;
-      padding: 36px 42px 30px;
+    .project-carousel {
+      width: 100%;
       border: 1px solid var(--rule);
       background: var(--paper-soft);
       overflow: hidden;
+    }
+
+    .project-spread {
+      height: 620px;
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+      gap: 42px;
+      padding: 36px 42px 30px;
     }
 
     .project-spread[hidden] {
@@ -417,7 +396,8 @@
     }
 
     .project-visual {
-      min-height: 280px;
+      min-height: 0;
+      height: 100%;
       display: grid;
       place-items: center;
       border-right: 1px solid var(--rule);
@@ -432,7 +412,20 @@
 
     .project-copy {
       min-width: 0;
+      min-height: 0;
+      height: 100%;
       align-self: center;
+      overflow-y: auto;
+      padding-right: 14px;
+      scrollbar-gutter: stable;
+    }
+
+    .project-copy::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .project-copy::-webkit-scrollbar-thumb {
+      background: var(--rule);
     }
 
     .project-meta {
@@ -504,7 +497,7 @@
       gap: 7px;
     }
 
-    .project-arrow-button {
+    .project-arrows button {
       width: 41px;
       height: 41px;
       border: 1px solid var(--ink);
@@ -514,12 +507,12 @@
       cursor: pointer;
     }
 
-    .project-arrow-button:hover:not(:disabled) {
+    .project-arrows button:hover:not(:disabled) {
       background: var(--ink);
       color: var(--paper);
     }
 
-    .project-arrow-button:disabled {
+    .project-arrows button:disabled {
       opacity: .35;
       cursor: not-allowed;
     }
@@ -770,8 +763,7 @@
         padding: 68px 0;
       }
 
-      .section-heading,
-      .project-group-heading {
+      .section-heading {
         grid-template-columns: 1fr;
         gap: 12px;
       }
@@ -789,26 +781,30 @@
         white-space: nowrap;
       }
 
-      .project-groups {
-        gap: 48px;
-      }
-
       .project-spread {
+        height: 75svh;
+        min-height: 560px;
+        max-height: 760px;
         grid-template-columns: 1fr;
-        gap: 20px;
-        min-height: 0;
+        grid-template-rows: 150px minmax(0, 1fr);
+        gap: 16px;
         padding: 22px;
       }
 
       .project-visual {
+        height: 150px;
         min-height: 150px;
         border-right: 0;
         border-bottom: 1px solid var(--rule);
-        padding: 0 0 18px;
+        padding: 0 0 16px;
       }
 
       .project-visual svg {
         max-width: 170px;
+      }
+
+      .project-copy {
+        height: auto;
       }
 
       .project h3 {
@@ -942,224 +938,187 @@
         </div>
       </header>
 
-      <div class="work-filters" role="group" aria-label="Filter project sections">
-        <button class="work-filter active" type="button" data-group-filter="all">All works</button>
-        <button class="work-filter" type="button" data-group-filter="nlp">NLP / GenAI</button>
-        <button class="work-filter" type="button" data-group-filter="ml">Machine Learning</button>
-        <button class="work-filter" type="button" data-group-filter="platforms">Live Platforms</button>
+      <div class="work-filters" role="group" aria-label="Filter projects">
+        <button class="work-filter active" type="button" data-filter="all">All works</button>
+        <button class="work-filter" type="button" data-filter="nlp">NLP / GenAI</button>
+        <button class="work-filter" type="button" data-filter="ml">Machine Learning</button>
+        <button class="work-filter" type="button" data-filter="platforms">Live Platforms</button>
       </div>
 
-      <div class="project-groups">
-        <section class="project-group" data-project-group="nlp" aria-labelledby="nlp-heading">
-          <header class="project-group-heading">
-            <span class="section-index">01 / NLP &amp; GENAI</span>
-            <h3 id="nlp-heading">Language, text &amp; automation</h3>
-          </header>
+      <div class="project-carousel">
+        <article class="project-spread project" data-category="nlp">
+          <div class="project-visual" aria-hidden="true">
+            <svg viewBox="0 0 240 145">
+              <rect x="17" y="20" width="206" height="105" rx="2" fill="none" stroke="#171916"/>
+              <path d="M17 48h206M17 76h206M17 104h206" stroke="#cac8bb"/>
+              <path d="M39 101l37-21 34 11 38-41 35 15 24-28" fill="none" stroke="#9aa9cf" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="39" cy="101" r="5" fill="#bd5b45"/>
+              <circle cx="207" cy="37" r="5" fill="#bd5b45"/>
+            </svg>
+          </div>
 
-          <article class="project-spread project" data-project-index="0">
-            <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 240 145">
-                <rect x="17" y="20" width="206" height="105" rx="2" fill="none" stroke="#171916"/>
-                <path d="M17 48h206M17 76h206M17 104h206" stroke="#cac8bb"/>
-                <path d="M39 101l37-21 34 11 38-41 35 15 24-28" fill="none" stroke="#9aa9cf" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="39" cy="101" r="5" fill="#bd5b45"/>
-                <circle cx="207" cy="37" r="5" fill="#bd5b45"/>
-              </svg>
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>01 / Generative AI</span>
+              <span>ERM</span>
             </div>
 
-            <div class="project-copy">
-              <div class="project-meta">
-                <span>01 / Generative AI</span>
-                <span>ERM</span>
-              </div>
+            <h3>AI-powered Safety Text Analytics</h3>
+            <p>Designed a reusable Azure OpenAI GPT-4 pipeline, alongside BERT and topic-modelling methods, to turn large volumes of unstructured safety records into structured, decision-ready insight for industrial clients.</p>
 
-              <h3>AI-powered Safety Text Analytics</h3>
-              <p>Designed a reusable Azure OpenAI GPT-4 pipeline, alongside BERT and topic-modelling methods, to turn large volumes of unstructured safety records into structured, decision-ready insight for industrial clients.</p>
+            <p><strong>Use cases:</strong></p>
+            <p>1. Chemicals sector: BERT multi-label classifiers predict consequence types from free-text hazard observations, and the pipeline then infers root causes of injury cases, so the client can flag high-risk observations and target proactive interventions.</p>
+            <p>2. Consumer health sector: Iterative prompt engineering assessed whether leadership actions or omissions contributed to events across incident, near-miss and audit records from 27 sites, and LDA topic modelling with manual refinement produced a standardised set of gap categories. This reduced manual investigation effort and gave the client cross-region and site-level visibility of recurring gaps to guide targeted process improvements.</p>
+            <p>3. Industry association: Classified hazards, consequences and work types across 40,000+ incident investigation records within a common taxonomy to surface sector-wide trends, working with safety and human factors specialists.</p>
 
-              <p><strong>Use cases:</strong></p>
-              <p>1. Chemicals sector: BERT multi-label classifiers predict consequence types from free-text hazard observations, and the pipeline then infers root causes of injury cases, so the client can flag high-risk observations and target proactive interventions.</p>
-              <p>2. Consumer health sector: Iterative prompt engineering assessed whether leadership actions or omissions contributed to events across incident, near-miss and audit records from 27 sites, and LDA topic modelling with manual refinement produced a standardised set of gap categories. This reduced manual investigation effort and gave the client cross-region and site-level visibility of recurring gaps to guide targeted process improvements.</p>
-              <p>3. Industry association: Classified hazards, consequences and work types across 40,000+ incident investigation records within a common taxonomy to surface sector-wide trends, working with safety and human factors specialists.</p>
-
-              <div class="tags">
-                <span>Python</span>
-                <span>LLM</span>
-                <span>Azure OpenAI GPT-4</span>
-                <span>Prompt engineering</span>
-                <span>BERT</span>
-                <span>LDA</span>
-                <span>Topic Modelling</span>
-                <span>Microsoft Fabric</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-spread project" data-project-index="1" hidden>
-            <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 180 145">
-                <path d="M35 32l54 35 59-39M89 67l-32 48m32-48 54 48" fill="none" stroke="#77796f"/>
-                <rect x="15" y="14" width="40" height="35" fill="none" stroke="#171916"/>
-                <circle cx="148" cy="28" r="15" fill="none" stroke="#171916"/>
-                <circle cx="89" cy="67" r="19" fill="#9aa9cf"/>
-                <circle cx="57" cy="115" r="12" fill="none" stroke="#171916"/>
-                <circle cx="143" cy="115" r="12" fill="none" stroke="#171916"/>
-                <circle cx="35" cy="32" r="3" fill="#bd5b45"/>
-              </svg>
-            </div>
-
-            <div class="project-copy">
-              <div class="project-meta">
-                <span>04 / Retrieval Augmented Generation (RAG)</span>
-                <span>Personal</span>
-              </div>
-
-              <h3>Talk to Wikipedia</h3>
-              <p>Built a local question-answering prototype that retrieves relevant Wikipedia passages using vector search and graph relationships, then generates answers grounded in the retrieved evidence.</p>
-              <p>The project combines Chroma for semantic passage retrieval, Neo4j for article, topic and chunk relationships, and Ollama for local embeddings and answer generation.</p>
-
-              <div class="tags">
-                <span>Python</span>
-                <span>RAG</span>
-                <span>GraphRAG</span>
-                <span>Chroma</span>
-                <span>Neo4j</span>
-                <span>Ollama</span>
-              </div>
-
-              <a class="project-link"
-                 href="https://github.com/farisadania/talk-to-wikipedia-graphrag"
-                 target="_blank"
-                 rel="noopener noreferrer">View project on GitHub ↗</a>
-            </div>
-          </article>
-
-          <article class="project-spread project" data-project-index="2" hidden>
-            <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 240 112">
-                <rect x="25" y="18" width="48" height="75" fill="none" stroke="#171916"/>
-                <path d="M36 35h26M36 46h26M36 57h18" stroke="#cac8bb"/>
-                <path d="M79 55h50m-12-10 12 10-12 10" fill="none" stroke="#9aa9cf" stroke-width="3"/>
-                <rect x="142" y="18" width="73" height="75" fill="none" stroke="#171916"/>
-                <path d="M153 35h50M153 47h50" stroke="#cac8bb"/>
-                <path d="M153 62h33" stroke="#bd5b45" stroke-width="7"/>
-              </svg>
-            </div>
-
-            <div class="project-copy">
-              <div class="project-meta">
-                <span>05 / Automation</span>
-                <span>ERM</span>
-              </div>
-
-              <h3>Document or Process Automation</h3>
-              <p>Every pull request needed a detailed description covering the databases used, files processed, code changes and deployment plan, which took 20–30 minutes to complete. I decided to automate this on my own initiative.</p>
-              <p>I built a notebook that retrieves commit changes and linked work items from Azure DevOps, then integrated GPT-4 to draft the description using the required template. The process now takes about two minutes and is used by data scientists and software developers on the team.</p>
-              <p><strong>It is a small tool, but it shows how routine work can be made faster and more consistent.</strong></p>
-
-              <div class="tags">
-                <span>LLM</span>
-                <span>Azure OpenAI GPT-4</span>
-                <span>Azure DevOps</span>
-              </div>
-            </div>
-          </article>
-
-          <div class="project-controls">
-            <span class="project-count" aria-live="polite">01 / 03</span>
-            <div class="project-arrows">
-              <button class="project-arrow-button" type="button" data-direction="previous" aria-label="Previous NLP project">←</button>
-              <button class="project-arrow-button" type="button" data-direction="next" aria-label="Next NLP project">→</button>
+            <div class="tags">
+              <span>Python</span>
+              <span>LLM</span>
+              <span>Azure OpenAI GPT-4</span>
+              <span>Prompt engineering</span>
+              <span>BERT</span>
+              <span>LDA</span>
+              <span>Topic Modelling</span>
+              <span>Microsoft Fabric</span>
             </div>
           </div>
-        </section>
+        </article>
 
-        <section class="project-group" data-project-group="ml" aria-labelledby="ml-heading">
-          <header class="project-group-heading">
-            <span class="section-index">02 / MACHINE LEARNING</span>
-            <h3 id="ml-heading">Predictive models &amp; emissions</h3>
-          </header>
+        <article class="project-spread project" data-category="ml" hidden>
+          <div class="project-visual" aria-hidden="true">
+            <svg viewBox="0 0 240 145">
+              <path d="M28 119V20M28 119h190" fill="none" stroke="#171916"/>
+              <path d="M28 94h190M28 68h190M28 43h190" stroke="#cac8bb"/>
+              <path d="M38 104c25-3 25-42 51-38 25 4 32 28 54 15 22-12 30-45 54-34 10 5 14 9 20-5" fill="none" stroke="#9aa9cf" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="197" cy="42" r="5" fill="#bd5b45"/>
+            </svg>
+          </div>
 
-          <article class="project-spread project" data-project-index="0">
-            <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 240 145">
-                <path d="M28 119V20M28 119h190" fill="none" stroke="#171916"/>
-                <path d="M28 94h190M28 68h190M28 43h190" stroke="#cac8bb"/>
-                <path d="M38 104c25-3 25-42 51-38 25 4 32 28 54 15 22-12 30-45 54-34 10 5 14 9 20-5" fill="none" stroke="#9aa9cf" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="197" cy="42" r="5" fill="#bd5b45"/>
-              </svg>
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>02 / Predictive ML</span>
+              <span>ERM</span>
             </div>
 
-            <div class="project-copy">
-              <div class="project-meta">
-                <span>02 / Predictive ML</span>
-                <span>ERM</span>
-              </div>
+            <h3>Predictive Emissions Monitoring</h3>
+            <p>Where an asset has no continuous emissions analyser, neural-network models can predict its NOx, CO, SO₂ and VOC emissions from operational sensor data. At ERM, I use the company's established pipeline: it augments limited stack-test data using SMOTE, GAN, Gaussian and covariance noise, then trains Keras/TensorFlow models.</p>
+            <p><strong>I learned the workflow well enough to use it independently, rebuilding client-specific models for gas- and diesel-powered machinery by preparing the data and repeatedly refining the configuration to improve predictions.</strong> It demonstrates how quickly I can pick up an established modelling workflow and produce useful results.</p>
 
-              <h3>Predictive Emissions Monitoring</h3>
-              <p>Where an asset has no continuous emissions analyser, neural-network models can predict its NOx, CO, SO₂ and VOC emissions from operational sensor data. At ERM, I use the company's established pipeline: it augments limited stack-test data using SMOTE, GAN, Gaussian and covariance noise, then trains Keras/TensorFlow models.</p>
-              <p><strong>I learned the workflow well enough to use it independently, rebuilding client-specific models for gas- and diesel-powered machinery by preparing the data and repeatedly refining the configuration to improve predictions.</strong> It demonstrates how quickly I can pick up an established modelling workflow and produce useful results.</p>
-
-              <div class="tags">
-                <span>GANs</span>
-                <span>RNNs</span>
-                <span>Time series</span>
-                <span>Python</span>
-              </div>
-            </div>
-          </article>
-
-          <div class="project-controls">
-            <span class="project-count" aria-live="polite">01 / 01</span>
-            <div class="project-arrows" hidden>
-              <button class="project-arrow-button" type="button" data-direction="previous" aria-label="Previous machine-learning project">←</button>
-              <button class="project-arrow-button" type="button" data-direction="next" aria-label="Next machine-learning project">→</button>
+            <div class="tags">
+              <span>GANs</span>
+              <span>RNNs</span>
+              <span>Time series</span>
+              <span>Python</span>
             </div>
           </div>
-        </section>
+        </article>
 
-        <section class="project-group" data-project-group="platforms" aria-labelledby="platform-heading">
-          <header class="project-group-heading">
-            <span class="section-index">03 / LIVE PLATFORMS</span>
-            <h3 id="platform-heading">Data products in production</h3>
-          </header>
+        <article class="project-spread project" data-category="platforms" hidden>
+          <div class="project-visual" aria-hidden="true">
+            <svg viewBox="0 0 240 112">
+              <rect x="25" y="12" width="190" height="88" rx="2" fill="none" stroke="#171916"/>
+              <path d="M25 32h190" stroke="#171916"/>
+              <circle cx="39" cy="22" r="3" fill="#bd5b45"/>
+              <path d="M42 77h48M42 86h48M112 48h82M112 60h65" stroke="#cac8bb"/>
+              <path d="M112 87l19-13 18 5 21-24 19 7 15-15" fill="none" stroke="#9aa9cf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
 
-          <article class="project-spread project" data-project-index="0">
-            <div class="project-visual" aria-hidden="true">
-              <svg viewBox="0 0 240 112">
-                <rect x="25" y="12" width="190" height="88" rx="2" fill="none" stroke="#171916"/>
-                <path d="M25 32h190" stroke="#171916"/>
-                <circle cx="39" cy="22" r="3" fill="#bd5b45"/>
-                <path d="M42 77h48M42 86h48M112 48h82M112 60h65" stroke="#cac8bb"/>
-                <path d="M112 87l19-13 18 5 21-24 19 7 15-15" fill="none" stroke="#9aa9cf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>03 / Real-time analytics</span>
+              <span>ERM</span>
             </div>
 
-            <div class="project-copy">
-              <div class="project-meta">
-                <span>03 / Real-time analytics</span>
-                <span>ERM</span>
-              </div>
+            <h3>Emissions Monitoring Platform</h3>
+            <p>I work on emissions.AI, an existing near-real-time, cloud-based platform for industrial emissions monitoring and flaring analysis, used by 14 global oil and gas operators. I develop, debug, deploy and expand its codebase as required, working closely with process engineers, data analysts and software developers to ensure every fix and upgrade works for the client.</p>
+            <p><strong>I learned how to get to grips with an established codebase quickly, contribute to a live product that clients depend on, and work with a team to keep it reliable as it grows.</strong></p>
 
-              <h3>Emissions Monitoring Platform</h3>
-              <p>I work on emissions.AI, an existing near-real-time, cloud-based platform for industrial emissions monitoring and flaring analysis, used by 14 global oil and gas operators. I develop, debug, deploy and expand its codebase as required, working closely with process engineers, data analysts and software developers to ensure every fix and upgrade works for the client.</p>
-              <p><strong>I learned how to get to grips with an established codebase quickly, contribute to a live product that clients depend on, and work with a team to keep it reliable as it grows.</strong></p>
-
-              <div class="tags">
-                <span>Python</span>
-                <span>SQL</span>
-                <span>Azure DevOps</span>
-              </div>
-            </div>
-          </article>
-
-          <div class="project-controls">
-            <span class="project-count" aria-live="polite">01 / 01</span>
-            <div class="project-arrows" hidden>
-              <button class="project-arrow-button" type="button" data-direction="previous" aria-label="Previous platform project">←</button>
-              <button class="project-arrow-button" type="button" data-direction="next" aria-label="Next platform project">→</button>
+            <div class="tags">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Azure DevOps</span>
             </div>
           </div>
-        </section>
+        </article>
+
+        <article class="project-spread project" data-category="nlp" hidden>
+          <div class="project-visual" aria-hidden="true">
+            <svg viewBox="0 0 180 145">
+              <path d="M35 32l54 35 59-39M89 67l-32 48m32-48 54 48" fill="none" stroke="#77796f"/>
+              <rect x="15" y="14" width="40" height="35" fill="none" stroke="#171916"/>
+              <circle cx="148" cy="28" r="15" fill="none" stroke="#171916"/>
+              <circle cx="89" cy="67" r="19" fill="#9aa9cf"/>
+              <circle cx="57" cy="115" r="12" fill="none" stroke="#171916"/>
+              <circle cx="143" cy="115" r="12" fill="none" stroke="#171916"/>
+              <circle cx="35" cy="32" r="3" fill="#bd5b45"/>
+            </svg>
+          </div>
+
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>04 / Retrieval Augmented Generation (RAG)</span>
+              <span>Personal</span>
+            </div>
+
+            <h3>Talk to Wikipedia</h3>
+            <p>Built a local question-answering prototype that retrieves relevant Wikipedia passages using vector search and graph relationships, then generates answers grounded in the retrieved evidence.</p>
+            <p>The project combines Chroma for semantic passage retrieval, Neo4j for article, topic and chunk relationships, and Ollama for local embeddings and answer generation.</p>
+
+            <div class="tags">
+              <span>Python</span>
+              <span>RAG</span>
+              <span>GraphRAG</span>
+              <span>Chroma</span>
+              <span>Neo4j</span>
+              <span>Ollama</span>
+            </div>
+
+            <a class="project-link"
+               href="https://github.com/farisadania/talk-to-wikipedia-graphrag"
+               target="_blank"
+               rel="noopener noreferrer">View project on GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project-spread project" data-category="nlp" hidden>
+          <div class="project-visual" aria-hidden="true">
+            <svg viewBox="0 0 240 112">
+              <rect x="25" y="18" width="48" height="75" fill="none" stroke="#171916"/>
+              <path d="M36 35h26M36 46h26M36 57h18" stroke="#cac8bb"/>
+              <path d="M79 55h50m-12-10 12 10-12 10" fill="none" stroke="#9aa9cf" stroke-width="3"/>
+              <rect x="142" y="18" width="73" height="75" fill="none" stroke="#171916"/>
+              <path d="M153 35h50M153 47h50" stroke="#cac8bb"/>
+              <path d="M153 62h33" stroke="#bd5b45" stroke-width="7"/>
+            </svg>
+          </div>
+
+          <div class="project-copy">
+            <div class="project-meta">
+              <span>05 / Automation</span>
+              <span>ERM</span>
+            </div>
+
+            <h3>Document or Process Automation</h3>
+            <p>Every pull request needed a detailed description covering the databases used, files processed, code changes and deployment plan, which took 20–30 minutes to complete. I decided to automate this on my own initiative.</p>
+            <p>I built a notebook that retrieves commit changes and linked work items from Azure DevOps, then integrated GPT-4 to draft the description using the required template. The process now takes about two minutes and is used by data scientists and software developers on the team.</p>
+            <p><strong>It is a small tool, but it shows how routine work can be made faster and more consistent.</strong></p>
+
+            <div class="tags">
+              <span>LLM</span>
+              <span>Azure OpenAI GPT-4</span>
+              <span>Azure DevOps</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="project-controls">
+        <span class="project-count" aria-live="polite">01 / 05</span>
+        <div class="project-arrows">
+          <button id="previous-project" type="button" aria-label="Previous project">←</button>
+          <button id="next-project" type="button" aria-label="Next project">→</button>
+        </div>
       </div>
     </section>
 
@@ -1288,78 +1247,86 @@
       });
     });
 
-    document.querySelectorAll('.project-group').forEach(group => {
-      const projects = [...group.querySelectorAll(':scope > .project')];
-      const count = group.querySelector('.project-count');
-      const previous = group.querySelector('[data-direction="previous"]');
-      const next = group.querySelector('[data-direction="next"]');
-      const arrows = group.querySelector('.project-arrows');
+    const carousel = document.querySelector('.project-carousel');
+    const allCards = [...carousel.querySelectorAll('.project-spread')];
+    const filters = document.querySelectorAll('.work-filter');
+    const count = document.querySelector('.project-count');
+    const previous = document.getElementById('previous-project');
+    const next = document.getElementById('next-project');
 
-      let currentIndex = 0;
+    let currentIndex = 0;
 
-      function updateCarousel() {
-        projects.forEach((project, index) => {
-          project.hidden = index !== currentIndex;
-        });
+    function visibleCards() {
+      return allCards.filter(card => card.dataset.visible !== 'false');
+    }
 
-        if (count) {
-          count.textContent =
-            `${String(currentIndex + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}`;
-        }
+    function updateCarousel() {
+      const cards = visibleCards();
 
-        if (arrows) {
-          arrows.hidden = projects.length < 2;
-        }
+      allCards.forEach(card => {
+        card.hidden = true;
+      });
 
-        if (previous) {
-          previous.disabled = projects.length < 2;
-        }
-
-        if (next) {
-          next.disabled = projects.length < 2;
-        }
+      if (cards.length === 0) {
+        count.textContent = '00 / 00';
+        previous.disabled = true;
+        next.disabled = true;
+        return;
       }
 
-      if (previous) {
-        previous.addEventListener('click', () => {
-          if (projects.length > 1) {
-            currentIndex =
-              (currentIndex - 1 + projects.length) % projects.length;
-            updateCarousel();
-          }
-        });
-      }
+      currentIndex = Math.min(currentIndex, cards.length - 1);
+      cards[currentIndex].hidden = false;
+      cards[currentIndex].querySelector('.project-copy').scrollTop = 0;
 
-      if (next) {
-        next.addEventListener('click', () => {
-          if (projects.length > 1) {
-            currentIndex =
-              (currentIndex + 1) % projects.length;
-            updateCarousel();
-          }
-        });
-      }
+      count.textContent =
+        `${String(currentIndex + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
 
-      updateCarousel();
+      previous.disabled = cards.length < 2;
+      next.disabled = cards.length < 2;
+    }
+
+    previous.addEventListener('click', () => {
+      const cards = visibleCards();
+
+      if (cards.length > 1) {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateCarousel();
+      }
     });
 
-    const groupFilters = document.querySelectorAll('.work-filter');
-    const projectGroups = document.querySelectorAll('.project-group');
+    next.addEventListener('click', () => {
+      const cards = visibleCards();
 
-    groupFilters.forEach(button => {
+      if (cards.length > 1) {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateCarousel();
+      }
+    });
+
+    filters.forEach(button => {
       button.addEventListener('click', () => {
-        groupFilters.forEach(filter => filter.classList.remove('active'));
+        filters.forEach(filter => filter.classList.remove('active'));
         button.classList.add('active');
 
-        const selected = button.dataset.groupFilter;
+        const selected = button.dataset.filter;
 
-        projectGroups.forEach(group => {
-          group.hidden =
-            selected !== 'all' &&
-            group.dataset.projectGroup !== selected;
+        allCards.forEach(card => {
+          card.dataset.visible =
+            selected === 'all' || card.dataset.category === selected
+              ? 'true'
+              : 'false';
         });
+
+        currentIndex = 0;
+        updateCarousel();
       });
     });
+
+    allCards.forEach(card => {
+      card.dataset.visible = 'true';
+    });
+
+    updateCarousel();
   </script>
 </body>
 </html>
