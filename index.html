@@ -713,7 +713,7 @@
       max-width: 750px;
       margin: 0;
       color: var(--ink);
-      font: 700 clamp(40px, 5vw, 50px)/.9 var(--display);
+      font: 700 clamp(40px, 5vw, 35px)/.9 var(--display);
       letter-spacing: -.025em;
     }
 
@@ -737,29 +737,46 @@
       background: var(--cream);
     }
 
-    .about-spread {
+    .about-section .section-heading {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 42px;
+    }
+
+    .section-number {
+      padding-top: 13px;
+      color: var(--orange);
+      font: 10px var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .about-section .section-heading h2 {
+      max-width: 950px;
+      margin: 0;
+      font: 500 clamp(36px, 5vw, 72px)/.95 var(--display);
+      letter-spacing: -.04em;
+    }
+
+    .about-layout {
       display: grid;
       grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr);
       border-top: 1px solid var(--ink);
       border-bottom: 1px solid var(--ink);
     }
 
-    .about-statement {
-      padding: 35px 36px 35px 0;
-      background: #e7dece;
-    }
-
-    .about-statement p {
-      position: sticky;
-      top: 25px;
+    .about-quote {
+      align-self: stretch;
       margin: 0;
+      padding: 34px 32px 34px 0;
       color: var(--orange);
-      font: 700 clamp(47px, 6vw, 82px)/.86 var(--display);
-      letter-spacing: -.035em;
+      font: 600 clamp(30px, 4vw, 48px)/1.08 var(--serif);
     }
 
     .about-copy {
-      padding: 34px clamp(22px, 5vw, 64px);
+      padding: 34px 0 34px clamp(22px, 5vw, 64px);
       border-left: 1px solid var(--ink);
     }
 
@@ -1139,27 +1156,26 @@
       .publication-feature p {
         font-size: 15px;
       }
+      
+      .about-section .section-heading {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
 
-      .about-spread {
+      .about-layout {
         grid-template-columns: 1fr;
       }
 
-      .about-statement {
-        padding: 23px;
-      }
-
-      .about-statement p {
-        position: static;
-        font-size: clamp(52px, 14vw, 80px);
+      .about-quote {
+        padding: 24px 0;
+        font-size: 34px;
       }
 
       .about-copy {
-        padding: 23px 0;
+        padding: 24px 0;
+        border-top: 1px solid var(--ink);
         border-left: 0;
       }
-
-      .about-copy > p {
-        font-size: 15px;
       }
 
       .education {
@@ -1525,44 +1541,41 @@
       </div>
     </section>
 
-    <section class="about-section section" id="about">
-      <div class="wrap">
-        <header class="section-heading">
-          <div class="section-label">03 / About</div>
-          <div>
-            <h2>About the work.</h2>
+  <section class="wrap section about-section" id="about">
+    <header class="section-heading">
+      <div class="section-number">02 / About</div>
+      <h2>Curiosity, applied with care.</h2>
+    </header>
+
+    <div class="about-layout">
+      <blockquote class="about-quote">
+        “The form of the data changes. The aim stays the same:
+        make the evidence useful.”
+      </blockquote>
+
+      <div class="about-copy">
+        <p>I hold an MSc in Data Science from the University of Aberdeen and a BSc (Hons) in Mathematics from MARA University of Technology in Malaysia, both with First Class Honours.</p>
+
+        <p>My professional experience spans industrial emissions analytics, live production platforms, safety analytics, NLP and LLM workflows. As long as there is a problem worth understanding and data in any form to learn from, I’m comfortable working across industries.</p>
+
+        <p>I enjoy collaborating across disciplines—with engineers, analysts, developers and subject-matter experts—to turn imperfect information into useful evidence and practical decisions.</p>
+
+        <div class="education">
+          <div class="degree">
+            <small>Master’s degree · 2021–2022</small>
+            <strong>MSc Data Science · First Class with Distinction</strong>
+            <small>University of Aberdeen, UK</small>
           </div>
-        </header>
 
-        <div class="about-spread">
-          <div class="about-statement">
-            <p>Data takes many forms. So do the questions worth asking.</p>
-          </div>
-
-          <div class="about-copy">
-            <p>I hold an MSc in Data Science from the University of Aberdeen and a BSc (Hons) in Mathematics from MARA University of Technology in Malaysia, both with First Class Honours.</p>
-
-            <p>My professional experience spans industrial emissions analytics, live production platforms, safety analytics, NLP and LLM workflows. As long as there is a problem worth understanding and data in any form to learn from, I’m comfortable working across industries.</p>
-
-            <p>I enjoy collaborating across disciplines—with engineers, analysts, developers and subject-matter experts—to turn imperfect information into useful evidence and practical decisions.</p>
-
-            <div class="education">
-              <div class="degree">
-                <small>Master’s degree · 2021–2022</small>
-                <strong>MSc Data Science · First Class with Distinction</strong>
-                <small>University of Aberdeen, UK</small>
-              </div>
-
-              <div class="degree">
-                <small>Bachelor’s degree · 2017–2021</small>
-                <strong>BSc Mathematics · First Class with Distinction</strong>
-                <small>MARA University of Technology, Malaysia</small>
-              </div>
-            </div>
+          <div class="degree">
+            <small>Bachelor’s degree · 2017–2021</small>
+            <strong>BSc Mathematics · First Class with Distinction</strong>
+            <small>MARA University of Technology, Malaysia</small>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <section class="toolkit-section section" id="toolkit">
       <div class="wrap">
