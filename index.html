@@ -730,6 +730,7 @@
       border-bottom: 1px solid var(--ink);
       font: 9px var(--mono);
       text-transform: uppercase;
+      color: #365adb;
     }
 
     /* About spread */
@@ -883,14 +884,27 @@
       font: 400 17px/1.65 var(--serif);
     }
 
-    .contact .button {
-      border-color: var(--cream);
-      color: var(--cream);
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .contact .button.primary {
-      border-color: #d5bd98;
-      background: #d5bd98;
+    .contact-actions .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 15px;
+      border: 1px solid var(--cream);
+      color: var(--cream);
+      font: 9px var(--mono);
+      text-transform: uppercase;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .contact-actions .button.primary {
+      border-color: rgba(133, 83, 79, .45);
+      background: rgba(133, 83, 79, .45);
       color: var(--ink);
     }
 
@@ -1465,9 +1479,14 @@
               </div>
 
               <a class="project-link"
-                 href="https://github.com/farisadania/talk-to-wikipedia-graphrag"
+                 href="https://farisadania.github.io/talk-to-wikipedia-graphrag/outputs/project-report.html"
                  target="_blank"
-                 rel="noopener noreferrer">View project on GitHub ↗</a>
+                 rel="noopener noreferrer">View the interactive project report ↗</a>
+              
+              <a class="project-link"
+              href="https://github.com/farisadania/talk-to-wikipedia-graphrag"
+              target="_blank"
+              rel="noopener noreferrer">View source code ↗</a>
             </div>
           </article>
 
